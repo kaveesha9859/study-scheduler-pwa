@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+<meta name="theme-color" content="#1976d2" />
+<link rel="apple-touch-icon" href="%PUBLIC_URL%/icons/icon-192.png" />
+
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,5 +41,15 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <noscript>
+      <strong>We're sorry — this app requires JavaScript.</strong>
+    </noscript>
+    
+    <!-- Offline fallback -->
+    <div id="offline-fallback" style="display:none; text-align:center; padding:2rem;">
+      <h2>You’re offline</h2>
+      <p>Study Scheduler can still show your tasks, but some features may not work.</p>
+    </div>
+    
   </body>
 </html>

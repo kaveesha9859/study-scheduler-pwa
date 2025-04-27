@@ -1,3 +1,4 @@
+// src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -12,12 +13,17 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://cra.link/PWA
-serviceWorkerRegistration.register();
+// Register the service worker to enable PWA installability and offline support.
+// Provide an onUpdate callback so the user can reload when a new version is available.
+serviceWorkerRegistration.register({
+  onUpdate: registration => {
+    if (window.confirm('A new version is available. Reload to update?')) {
+      // Tell the waiting SW to skip waiting, then reload the page
+      registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+      window.location.reload();
+    }
+  }
+});
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// Start measuring performance in your app (optional)
 reportWebVitals();
